@@ -2,11 +2,6 @@ package covidTest;
 import java.util.*;
 
 
-//Date picker examples:
-// https://examples.javacodegeeks.com/desktop-java/swing/java-swing-date-picker-example/
-// https://www.codejava.net/java-se/swing/how-to-use-jdatepicker-to-display-calendar-component
-// https://www.roseindia.net/tutorial/java/swing/datePicker.html
-
 public class Main {
 	private HashSet<Registration> regUsers;
 	private int regNumCount=0;
@@ -16,10 +11,31 @@ public class Main {
 	}
 	
 	
-	public void addReg(String fn, String ln, String email, long num, boolean hasCOVID) {
+	public void addReg(String fn, String ln, String email, String num, String hasCOVID) {
 		int currentRegID = regNumCount++;
 		regUsers.add(new Registration(fn,ln,email,num,hasCOVID, currentRegID));
+	
 	}
 	
+	public boolean containsNumber(String num) {
+//		if(regUsers == null) {
+//			return false;
+//		}
+		for(Registration r : regUsers) {
+			if(r.getNum().equals(num)) {
+				return true;
+			}
+		}
+		return false;
+	}	
+	
+	public boolean containsEmail(String email) {
+		for(Registration r: regUsers) {
+			if(r.getEmail().equals(email)) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
